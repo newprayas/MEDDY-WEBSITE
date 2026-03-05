@@ -149,11 +149,6 @@ h1 {
   line-height: 1.16;
   text-align: center;
   display: inline;
-  padding: 0.04em 0.2em;
-  border-radius: 0.26rem;
-  background: #fff4b8;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 .feature-emoji {
@@ -366,7 +361,6 @@ main {
   border: 1px solid rgba(17, 17, 17, 0.12);
   background: #fff4b8;
   color: #111111;
-  font-weight: 800;
 }
 
 .cta {
