@@ -80,3 +80,93 @@ if (!reduceMotion) {
   window.addEventListener("resize", requestRender);
   requestRender();
 }
+
+const booksTrack = document.querySelector('[data-marquee="books"] .marquee-track');
+const subjectsTrack = document.querySelector('[data-marquee="subjects"] .marquee-track');
+
+const books = [
+  "# Davidson's Medicine",
+  "# Bailey and Love Surgery",
+  "# Robbins Pathology",
+  "# DC Dutta Obstetrics",
+  "# DC Dutta Gynecology",
+  "# USMLE First Aid",
+  "# Williams Obstetrics",
+  "# Nelson Pediatrics",
+  "# Apley's Orthopedics",
+  "# Lange Microbiology",
+  "# BD Chaurasia Anatomy",
+  "# Guyton and Hall",
+  "# Harrison's",
+  "# Hutchison's",
+  "# Macleods",
+  "# Norman Browse",
+  "# Greenberg's Neurosurgery",
+];
+
+const subjects = [
+  "# Surgery",
+  "# Medicine",
+  "# Gynecology",
+  "# Obstetrics",
+  "# Anatomy",
+  "# Pediatrics",
+  "# USMLE",
+  "# Nephrology",
+  "# Pharmacology",
+  "# Microbiology",
+  "# Neurosurgery",
+  "# Orthopedics",
+];
+
+const shuffleList = (items) => {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
+};
+
+const createChip = (label, hidden = false) => {
+  const chip = document.createElement("span");
+  chip.className = "marquee-chip";
+  chip.textContent = label;
+  if (hidden) {
+    chip.setAttribute("aria-hidden", "true");
+  }
+  return chip;
+};
+
+const createMarqueeRun = (items, hidden = false) => {
+  const run = document.createElement("div");
+  run.className = "marquee-run";
+  if (hidden) {
+    run.setAttribute("aria-hidden", "true");
+  }
+
+  items.forEach((item) => {
+    run.append(createChip(item, hidden));
+  });
+
+  return run;
+};
+
+const populateMarqueeTrack = (track, list) => {
+  track.textContent = "";
+  const orderedItems = shuffleList(list);
+  const fragment = document.createDocumentFragment();
+
+  fragment.append(createMarqueeRun(orderedItems));
+
+  if (!reduceMotion) {
+    fragment.append(createMarqueeRun(orderedItems, true));
+  }
+
+  track.append(fragment);
+};
+
+if (booksTrack && subjectsTrack) {
+  populateMarqueeTrack(booksTrack, books);
+  populateMarqueeTrack(subjectsTrack, subjects);
+}

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260305-7" />
 </head>
 
 <body>
@@ -26,6 +26,28 @@
     <p class="tagline">Ask. Learn. Verify.</p>
     <p class="hero-copy">Your medical books, organized and searchable in one place.</p>
     <p class="creator-tag">Made with ❤️ by Prayas</p>
+    <section class="hero-features reveal" aria-label="Meddy app features">
+      <div class="hero-features-grid">
+        <article class="feature-card">
+          <div class="feature-head">
+            <h2>📚 Only answers from your selected books.</h2>
+          </div>
+          <p class="feature-sub">Always accurate</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-head">
+            <h2>🔎 Exact sources for every answer.</h2>
+          </div>
+          <p class="feature-sub">Know your sources 🥳</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-head">
+            <h2>⚡ Super fast, reads 10 books in seconds!</h2>
+          </div>
+          <p class="feature-sub">Quick answers 🥳</p>
+        </article>
+      </div>
+    </section>
   </header>
 
   <main id="workflow" aria-label="Meddy workflow steps">
@@ -61,7 +83,7 @@
         <p>Add books from the in-app library. Need a title not listed? You can request it.</p>
       </div>
       <figure class="phone-frame">
-        <img class="shot" src="./assets/step3.jpg"
+        <img class="shot" src="./assets/add-a-book-real.jpg"
           alt="Meddy app screenshot: Step 3, adding books from the app library." loading="lazy" decoding="async"
           width="1220" height="2712" />
       </figure>
@@ -96,16 +118,64 @@
           loading="lazy" decoding="async" width="1220" height="2712" />
       </figure>
     </section>
+
+    <section class="library-marquee reveal" aria-label="Books and subjects available in Meddy">
+      <div class="marquee-hero" aria-hidden="true">
+        <span>ASK ANYTHING</span>
+        <span>ANY BOOK</span>
+      </div>
+      <div class="marquee-row" data-marquee="books">
+        <div class="marquee-track">
+          <div class="marquee-run">
+            <span class="marquee-chip"># Davidson's Medicine</span>
+            <span class="marquee-chip"># Bailey and Love Surgery</span>
+            <span class="marquee-chip"># Robbins Pathology</span>
+            <span class="marquee-chip"># DC Dutta Obstetrics</span>
+            <span class="marquee-chip"># DC Dutta Gynecology</span>
+            <span class="marquee-chip"># USMLE First Aid</span>
+            <span class="marquee-chip"># Williams Obstetrics</span>
+            <span class="marquee-chip"># Nelson Pediatrics</span>
+            <span class="marquee-chip"># Apley's Orthopedics</span>
+            <span class="marquee-chip"># Lange Microbiology</span>
+            <span class="marquee-chip"># BD Chaurasia Anatomy</span>
+            <span class="marquee-chip"># Guyton and Hall</span>
+            <span class="marquee-chip"># Harrison's</span>
+            <span class="marquee-chip"># Hutchison's</span>
+            <span class="marquee-chip"># Macleods</span>
+            <span class="marquee-chip"># Norman Browse</span>
+            <span class="marquee-chip"># Greenberg's Neurosurgery</span>
+          </div>
+        </div>
+      </div>
+      <div class="marquee-row marquee-row-alt" data-marquee="subjects">
+        <div class="marquee-track">
+          <div class="marquee-run">
+            <span class="marquee-chip"># Surgery</span>
+            <span class="marquee-chip"># Medicine</span>
+            <span class="marquee-chip"># Gynecology</span>
+            <span class="marquee-chip"># Obstetrics</span>
+            <span class="marquee-chip"># Anatomy</span>
+            <span class="marquee-chip"># Pediatrics</span>
+            <span class="marquee-chip"># USMLE</span>
+            <span class="marquee-chip"># Nephrology</span>
+            <span class="marquee-chip"># Pharmacology</span>
+            <span class="marquee-chip"># Microbiology</span>
+            <span class="marquee-chip"># Neurosurgery</span>
+            <span class="marquee-chip"># Orthopedics</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="cta reveal">
-    <p class="cta-title">Better answers with proof?</p>
+    <p class="cta-title">Your best study companion ❤️</p>
     <a class="cta-btn" href="https://betterdocs-ten.vercel.app/" target="_blank" rel="noopener noreferrer">
       <span>Try Meddy now!</span>
     </a>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=20260305-7"></script>
 </body>
 
 </html>
