@@ -105,10 +105,11 @@ const books = [
   "# Lange Microbiology",
   "# BD Chaurasia Anatomy",
   "# Guyton and Hall",
-  "# Harrison's",
-  "# Hutchison's",
+  "# Harrison's Medicine",
+  "# Hutchison's Medicine",
   "# Macleods",
   "# Norman Browse",
+  "# Brenner and Rector Nephrology",
   "# Greenberg's Neurosurgery",
 ];
 
@@ -162,13 +163,19 @@ const createMarqueeRun = (items, hidden = false) => {
 
 const populateMarqueeTrack = (track, list) => {
   track.textContent = "";
-  const orderedItems = shuffleList(list);
+  const primaryItems = shuffleList(list);
   const fragment = document.createDocumentFragment();
 
-  fragment.append(createMarqueeRun(orderedItems));
+  fragment.append(createMarqueeRun(primaryItems));
 
   if (!reduceMotion) {
-    fragment.append(createMarqueeRun(orderedItems, true));
+    let secondaryItems = shuffleList(list);
+
+    if (secondaryItems.join("|") === primaryItems.join("|")) {
+      secondaryItems = shuffleList(list);
+    }
+
+    fragment.append(createMarqueeRun(secondaryItems, true));
   }
 
   track.append(fragment);

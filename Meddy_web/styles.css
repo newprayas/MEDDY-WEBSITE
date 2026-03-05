@@ -327,6 +327,10 @@ main {
   min-height: 0;
 }
 
+.marquee-row[data-marquee="books"] {
+  --marquee-speed: 90s;
+}
+
 .marquee-track {
   display: flex;
   align-items: center;
@@ -354,6 +358,15 @@ main {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.2;
+}
+
+.marquee-row[data-marquee="books"] .marquee-chip {
+  padding: 0.24rem 0.64rem;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background: #fff4b8;
+  color: #111111;
+  font-weight: 800;
 }
 
 .cta {
