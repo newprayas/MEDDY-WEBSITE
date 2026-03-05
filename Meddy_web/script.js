@@ -1,6 +1,8 @@
 const revealItems = [...document.querySelectorAll(".reveal")];
 const stepCards = [...document.querySelectorAll(".step-card")];
 const screenshots = [...document.querySelectorAll(".shot")];
+const heroSection = document.querySelector("#top");
+const firstStepCard = stepCards[0];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!reduceMotion) {
@@ -9,6 +11,12 @@ if (!reduceMotion) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
+
+          if (entry.target === heroSection && firstStepCard) {
+            firstStepCard.classList.add("is-visible");
+            observer.unobserve(firstStepCard);
+          }
+
           observer.unobserve(entry.target);
         }
       });
