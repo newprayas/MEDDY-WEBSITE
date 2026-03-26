@@ -379,17 +379,70 @@ main {
   line-height: 1.2;
 }
 
+.cta-actions {
+  margin-top: 0.92rem;
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+}
+
+.cta-section {
+  display: grid;
+  justify-items: center;
+  gap: 0.48rem;
+  width: 100%;
+}
+
+.cta-section-text {
+  gap: 0.3rem;
+}
+
+.cta-label {
+  margin: 0;
+  color: var(--brand-deep);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+}
+
+.cta-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  max-width: 24ch;
+}
+
+.cta-coming-soon {
+  margin: 0;
+  font-weight: 800;
+  color: #10141d;
+  font-size: 1.02rem;
+}
+
+.cta-divider {
+  color: rgba(31, 42, 63, 0.42);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.cta-divider-soft {
+  opacity: 0.7;
+}
+
 .cta-btn {
-  margin: 0.92rem auto 0;
+  margin: 0;
   width: fit-content;
   max-width: 100%;
   text-decoration: none;
   display: inline-block;
   padding: 0;
-  border: 1px solid #0f1218;
+  border: 1px solid rgba(31, 42, 63, 0.22);
   border-radius: 10px;
-  background: #10141d;
-  box-shadow: 0 8px 18px rgba(7, 9, 15, 0.24);
+  background: #f8f6ee;
+  box-shadow: 0 8px 18px rgba(20, 31, 48, 0.12);
   animation: none;
 }
 
@@ -399,7 +452,7 @@ main {
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: #ffffff;
+  color: #1f2a3f;
   font-family: "Manrope", "Segoe UI", sans-serif;
   font-size: clamp(1.02rem, 4.8vw, 1.16rem);
   font-weight: 800;
@@ -413,8 +466,12 @@ main {
 .cta-btn:hover,
 .cta-btn:focus-visible {
   transform: translateY(-1px);
-  background: #0a0d13;
-  box-shadow: 0 11px 20px rgba(7, 9, 15, 0.27);
+  background: #f1ede2;
+  box-shadow: 0 11px 20px rgba(20, 31, 48, 0.16);
+}
+
+.creator-tag-footer {
+  margin-top: 1rem;
 }
 
 .reveal {
@@ -485,7 +542,7 @@ main {
   }
 
   .hero-features-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 0.92rem;
     row-gap: 1.14rem;
   }
@@ -501,6 +558,10 @@ main {
   .cta-btn {
     width: fit-content;
     max-width: 100%;
+  }
+
+  .cta-actions {
+    gap: 0.95rem;
   }
 }
 
