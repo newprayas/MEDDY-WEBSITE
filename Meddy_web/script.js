@@ -46,21 +46,22 @@ const setActiveStep = (index) => {
 const slider = document.getElementById("steps-slider");
 
 if (slider) {
-  const autoScrollDuration = document.title.includes("Meddy") ? 1200 : 2500;
+  const autoScrollDuration = document.title.includes("Meddy") ? 1800 : 2000;
   let autoScrollTimer;
   let timeRemaining = autoScrollDuration;
   let lastStartTime = Date.now();
   let isInteracting = false;
+  let isVisible = false;
 
   const startAutoScroll = () => {
-    if (isInteracting) return;
+    if (isInteracting || !isVisible) return;
     clearTimeout(autoScrollTimer);
     lastStartTime = Date.now();
     autoScrollTimer = setTimeout(autoScrollStep, timeRemaining);
   };
 
   const pauseAutoScroll = () => {
-    if (isInteracting) return;
+    if (isInteracting && !isVisible) return; // already paused
     clearTimeout(autoScrollTimer);
     timeRemaining -= (Date.now() - lastStartTime);
     if (timeRemaining < 0) timeRemaining = 0;
@@ -76,11 +77,11 @@ if (slider) {
   const resetAutoScroll = (force = false) => {
     timeRemaining = autoScrollDuration;
     if (force) isInteracting = false;
-    if (!isInteracting) startAutoScroll();
+    if (!isInteracting && isVisible) startAutoScroll();
   };
 
   const autoScrollStep = () => {
-    if (isInteracting) return;
+    if (isInteracting || !isVisible) return;
     const maxScroll = slider.scrollWidth - slider.clientWidth;
 
     if (slider.scrollLeft >= maxScroll - 5) {
@@ -94,15 +95,25 @@ if (slider) {
     resetAutoScroll();
   };
 
-  // Replace step observer logic just to handle active class if needed 
-  // since we removed indicator. Or simple scroll listener
   slider.addEventListener("scroll", () => {
     let currentIndex = Math.round(slider.scrollLeft / slider.clientWidth);
     currentIndex = Math.max(0, Math.min(currentIndex, stepCards.length - 1));
     setActiveStep(currentIndex);
   }, { passive: true });
 
-  startAutoScroll();
+  const visibilityObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        isVisible = true;
+        startAutoScroll();
+      } else {
+        isVisible = false;
+        clearTimeout(autoScrollTimer);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  visibilityObserver.observe(slider);
 
   slider.addEventListener('mouseenter', pauseAutoScroll);
   slider.addEventListener('mouseleave', resumeAutoScroll);
@@ -174,6 +185,7 @@ const bubbleContainer = document.getElementById("examples-container");
 
 if (bubbleContainer) {
   let remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
+  let isBubblesVisible = false;
 
   const addBubble = (text) => {
     const bubble = document.createElement('div');
@@ -189,35 +201,46 @@ if (bubbleContainer) {
 
   // Initially show 3 random questions
   for (let i = 0; i < 3; i++) {
+    if (remainingPool.length === 0) {
+      remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
+    }
     addBubble(remainingPool.pop());
   }
 
-  // Rotate all bubbles sequentially every 5 seconds
-  setInterval(() => {
-    if (document.hidden) return; // don't animate in background
+  const rotateBubbles = () => {
+    if (document.hidden || !isBubblesVisible) return;
 
     const bubbles = Array.from(bubbleContainer.querySelectorAll('.example-bubble'));
     if (bubbles.length === 0) return;
 
-    bubbles.forEach((targetBubble, index) => {
-      setTimeout(() => {
+    // Phase 1: Fade out all together
+    bubbles.forEach(bubble => {
+      bubble.classList.remove('show');
+      bubble.classList.add('hide');
+    });
+
+    // Phase 2: Update text and fade back in
+    setTimeout(() => {
+      bubbles.forEach(bubble => {
         if (remainingPool.length === 0) {
           remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
         }
+        bubble.textContent = remainingPool.pop();
+        bubble.classList.remove('hide');
+        bubble.classList.add('show');
+      });
+    }, 400);
+  };
 
-        targetBubble.classList.remove('show');
-        targetBubble.classList.add('hide');
-
-        setTimeout(() => {
-          targetBubble.textContent = remainingPool.pop();
-          targetBubble.classList.remove('hide');
-          targetBubble.classList.add('show');
-        }, 800); // wait for 800ms CSS fade-out transition
-
-      }, index * 1000); // 1000ms stagger between each bubble fading out
+  const bubbleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isBubblesVisible = entry.isIntersecting;
     });
+  }, { threshold: 0.1 });
 
-  }, 4500); // total 4.5s cycle loop
+  bubbleObserver.observe(bubbleContainer);
+
+  setInterval(rotateBubbles, 2500);
 }
 
 if (!reduceMotion) {
