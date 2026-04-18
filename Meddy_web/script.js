@@ -82,7 +82,7 @@ if (slider) {
   const autoScrollStep = () => {
     if (isInteracting) return;
     const maxScroll = slider.scrollWidth - slider.clientWidth;
-    
+
     if (slider.scrollLeft >= maxScroll - 5) {
       slider.scrollTo({ left: 0, behavior: "smooth" });
     } else {
@@ -90,7 +90,7 @@ if (slider) {
       let nextIndex = (currentIndex + 1) % stepCards.length;
       slider.scrollTo({ left: nextIndex * slider.clientWidth, behavior: "smooth" });
     }
-    
+
     resetAutoScroll();
   };
 
@@ -111,7 +111,7 @@ if (slider) {
 }
 
 const exampleQuestions = [
-  "What are the Tokyo guidelines for cholecystitis?",
+  "Tokyo guidelines for cholecystitis?",
   "Pathophysiology of SLE?",
   "Define PPH?",
   "Complications of adenoids?",
@@ -121,7 +121,7 @@ const exampleQuestions = [
   "Mechanism of action of Diazepam?",
   "Bones of the upper limb?",
   "What is the Trendelenburg sign?",
-  "Difference between cohort and case-control study?",
+  "Cohort vs case-control study?",
   "What are the stages of shock?",
   "First-line treatment for Tuberculosis?",
   "Causes of left shift in oxyhemoglobin curve?",
@@ -153,7 +153,7 @@ if (bubbleContainer) {
     bubble.className = "example-bubble";
     bubble.textContent = text;
     bubbleContainer.appendChild(bubble);
-    
+
     // trigger reflow
     void bubble.offsetWidth;
     bubble.classList.add('show');
@@ -161,35 +161,35 @@ if (bubbleContainer) {
   };
 
   // Initially show 3 random questions
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     addBubble(remainingPool.pop());
   }
 
   // Rotate all bubbles sequentially every 5 seconds
   setInterval(() => {
     if (document.hidden) return; // don't animate in background
-    
+
     const bubbles = Array.from(bubbleContainer.querySelectorAll('.example-bubble'));
     if (bubbles.length === 0) return;
-    
+
     bubbles.forEach((targetBubble, index) => {
       setTimeout(() => {
         if (remainingPool.length === 0) {
           remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
         }
-        
+
         targetBubble.classList.remove('show');
         targetBubble.classList.add('hide');
-        
+
         setTimeout(() => {
           targetBubble.textContent = remainingPool.pop();
           targetBubble.classList.remove('hide');
           targetBubble.classList.add('show');
         }, 800); // wait for 800ms CSS fade-out transition
-        
+
       }, index * 1000); // 1000ms stagger between each bubble fading out
     });
-    
+
   }, 4500); // total 4.5s cycle loop
 }
 
