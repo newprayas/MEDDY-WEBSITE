@@ -154,6 +154,89 @@ if (slider && prevBtn && nextBtn && sliderIndicator) {
   updateButtons();
 }
 
+const exampleQuestions = [
+  "What are the Tokyo guidelines for cholecystitis?",
+  "Pathophysiology of SLE?",
+  "Define PPH?",
+  "Complications of adenoids?",
+  "Lab diagnosis of E. coli?",
+  "When to do a CT scan in a head injury patient?",
+  "Treatment of preterm labor?",
+  "Mechanism of action of Diazepam?",
+  "Bones of the upper limb?",
+  "What is the Trendelenburg sign?",
+  "Difference between cohort and case-control study?",
+  "What are the stages of shock?",
+  "First-line treatment for Tuberculosis?",
+  "Causes of left shift in oxyhemoglobin curve?",
+  "Management of Diabetic Ketoacidosis?",
+  "Clinical features of acute appendicitis?",
+  "Mechanism of action of Penicillin?",
+  "What is the triad of Meniere's disease?",
+  "Signs of retinal detachment?",
+  "Stages of labor?",
+  "Causes of Postpartum Hemorrhage?",
+  "Pathophysiology of Myocardial Infarction?",
+  "Types of hypersensitivity reactions?",
+  "Gram stain of Staphylococcus aureus?",
+  "Symptoms of primary open-angle glaucoma?",
+  "Management of acute epistaxis?",
+  "Complications of Peptic Ulcer Disease?",
+  "Diagnosis of Polycystic Ovary Syndrome?",
+  "What is the Bishop score used for?",
+  "Risk factors for Deep Vein Thrombosis?"
+];
+
+const bubbleContainer = document.getElementById("examples-container");
+
+if (bubbleContainer) {
+  let remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
+
+  const addBubble = (text) => {
+    const bubble = document.createElement('div');
+    bubble.className = "example-bubble";
+    bubble.textContent = text;
+    bubbleContainer.appendChild(bubble);
+    
+    // trigger reflow
+    void bubble.offsetWidth;
+    bubble.classList.add('show');
+    return bubble;
+  };
+
+  // Initially show 3 random questions
+  for(let i = 0; i < 3; i++) {
+    addBubble(remainingPool.pop());
+  }
+
+  // Rotate all bubbles sequentially every 5 seconds
+  setInterval(() => {
+    if (document.hidden) return; // don't animate in background
+    
+    const bubbles = Array.from(bubbleContainer.querySelectorAll('.example-bubble'));
+    if (bubbles.length === 0) return;
+    
+    bubbles.forEach((targetBubble, index) => {
+      setTimeout(() => {
+        if (remainingPool.length === 0) {
+          remainingPool = [...exampleQuestions].sort(() => Math.random() - 0.5);
+        }
+        
+        targetBubble.classList.remove('show');
+        targetBubble.classList.add('hide');
+        
+        setTimeout(() => {
+          targetBubble.textContent = remainingPool.pop();
+          targetBubble.classList.remove('hide');
+          targetBubble.classList.add('show');
+        }, 800); // wait for 800ms CSS fade-out transition
+        
+      }, index * 1000); // 1000ms stagger between each bubble fading out
+    });
+    
+  }, 4500); // total 4.5s cycle loop
+}
+
 if (!reduceMotion) {
   let ticking = false;
 

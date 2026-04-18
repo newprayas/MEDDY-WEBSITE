@@ -275,6 +275,63 @@ main {
   display: none;
 }
 
+.examples-section {
+  text-align: center;
+  margin: 1.5rem 0 0.5rem;
+  padding: 1rem;
+}
+
+.examples-title {
+  font-size: clamp(1.34rem, 8.5vw, 2.04rem);
+  font-weight: 900;
+  color: #d32932;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 0.92;
+}
+
+.chat-bubbles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 100px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.example-bubble {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(20, 31, 48, 0.05);
+  opacity: 0;
+  transition: opacity 800ms ease;
+  will-change: opacity;
+  display: inline-flex;
+  align-items: center;
+}
+
+.example-bubble::before {
+  content: '💬';
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.example-bubble.show {
+  opacity: 1;
+}
+
+.example-bubble.hide {
+  opacity: 0;
+}
+
 .step-focus .step-meta h2 {
   font-size: clamp(1.34rem, 6.2vw, 1.66rem);
 }
