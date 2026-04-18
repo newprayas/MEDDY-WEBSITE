@@ -143,22 +143,36 @@ h1 {
   transition: none;
 }
 
-.feature-card h2 {
-  margin: 0;
-  font-size: clamp(1.18rem, 5.3vw, 1.61rem);
-  line-height: 1.16;
+.feature-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  display: inline;
+}
+
+.feature-head h2 {
+  font-size: clamp(1.15rem, 5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-subtext {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0.35rem 0 0 0;
+  font-weight: 600;
+  text-align: center;
 }
 
 .feature-emoji {
   display: inline-block;
-  margin-right: 0.32em;
-  line-height: 1;
-}
-
-.feature-head {
-  display: block;
+  margin-right: 0.45rem;
+  font-size: 1.25rem;
 }
 
 .feature-sub {
@@ -216,49 +230,6 @@ main {
   min-width: 0; /* Fixes grid blowout */
 }
 
-.slider-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 1rem;
-  padding: 0 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.slider-indicator {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.nav-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--text);
-  cursor: pointer;
-  transition: all 200ms ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.nav-btn:hover:not(:disabled) {
-  background: var(--brand-cyan);
-  color: white;
-  border-color: var(--brand-cyan);
-  transform: translateY(-2px);
-}
-
-.nav-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .steps-slider {
   display: flex;
   overflow-x: auto;
@@ -294,10 +265,10 @@ main {
 
 .chat-bubbles-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
-  min-height: 100px;
+  min-height: 140px; /* enough space for 3 vertical rows */
   max-width: 600px;
   margin: 0 auto;
 }
@@ -315,13 +286,16 @@ main {
   transition: opacity 800ms ease;
   will-change: opacity;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 100%;
 }
 
 .example-bubble::before {
   content: '💬';
   margin-right: 0.5rem;
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .example-bubble.show {
@@ -338,6 +312,94 @@ main {
 
 .step-focus .step-meta p {
   font-size: 1rem;
+}
+
+.feature-card-drugs {
+  text-align: center;
+}
+
+.feature-card-drugs .feature-head h2 {
+  font-size: clamp(1.02rem, 4.4vw, 1.2rem);
+}
+
+.new-feature-tag-minimal {
+  color: #047857; /* Dark Emerald */
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+  letter-spacing: 0.05em;
+}
+
+.drugs-example-list {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.drugs-example-list p {
+  margin: 0;
+}
+
+.mini-divider {
+  width: 80px;
+  height: 4px;
+  background: rgba(31, 42, 63, 0.15);
+  margin: 0.2rem auto 0;
+  border-radius: 999px;
+}
+
+.confidence-quote {
+  text-align: center;
+  max-width: 600px;
+  margin: 1.5rem auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.quote-question {
+  margin: 0 0 0.15rem 0;
+  font-size: clamp(1.45rem, 6vw, 1.9rem);
+  font-weight: 900;
+  color: #d32932;
+  text-transform: uppercase;
+}
+
+.warning-pill {
+  display: inline-block;
+  background: var(--brand-yellow);
+  color: #111111;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.confidence-quote blockquote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: #1d4ed8;
+  opacity: 0.9;
+}
+
+.quote-main {
+  font-size: clamp(1.15rem, 5vw, 1.35rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.quote-sub {
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
 }
 
 .step-focus .phone-frame {
@@ -436,21 +498,25 @@ main {
 }
 
 .marquee-row[data-marquee="books"] {
-  --marquee-speed: 90s;
+  --marquee-speed: 120s;
+}
+
+.marquee-row[data-marquee="subjects"] {
+  --marquee-speed: 60s;
 }
 
 .marquee-track {
   display: flex;
   align-items: center;
   min-width: max-content;
-  animation: marqueeScroll var(--marquee-speed, 54s) linear infinite;
+  animation: marqueeScroll var(--marquee-speed, 60s) linear infinite;
   will-change: transform;
 }
 
 .marquee-run {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem; /* slightly increased spacing between pills */
   padding: 0.14rem 0;
 }
 
@@ -458,44 +524,67 @@ main {
   display: inline-flex;
   align-items: center;
   min-height: 0;
-  padding: 0;
-  border-radius: 0;
-  border: 0;
-  background: transparent;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background: #ffffff;
+  color: #111111;
   font-size: clamp(1.05rem, 4.2vw, 1.34rem);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.2;
+  padding: 0.24rem 0.64rem;
 }
 
 .marquee-row[data-marquee="books"] .marquee-chip {
-  padding: 0.24rem 0.64rem;
-  border-radius: 999px;
-  border: 1px solid rgba(17, 17, 17, 0.12);
   background: #fff4b8;
-  color: #111111;
 }
 
-.cta {
-  margin-top: 1rem;
+.cta-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-divider {
+  width: 140px;
+  height: 6px;
+  background: rgba(31, 42, 63, 0.2);
+  margin: 3.5rem auto 2.5rem;
+  border-radius: 999px;
+}
+
+.cta-box {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 1.18rem 0.95rem 1.2rem;
+  padding: 1.5rem 2rem;
   background: linear-gradient(180deg, #f9f8f1, #f4f3ec);
   text-align: center;
+  width: max-content;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cta-title {
-  margin: 0;
-  font-weight: 700;
-  font-size: clamp(1.08rem, 4.5vw, 1.34rem);
-  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 6vw, 1.8rem);
+  line-height: 1.3;
+}
+
+.main-conclusion {
+  background: linear-gradient(135deg, #7c3aed, #d946ef, #f43f5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .cta-actions {
-  margin-top: 0.92rem;
   display: grid;
-  gap: 0.9rem;
+  gap: 1.2rem;
   justify-items: center;
 }
 

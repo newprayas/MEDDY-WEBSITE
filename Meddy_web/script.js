@@ -44,47 +44,8 @@ const setActiveStep = (index) => {
 };
 
 const slider = document.getElementById("steps-slider");
-const prevBtn = document.getElementById("prev-step");
-const nextBtn = document.getElementById("next-step");
-const sliderIndicator = document.getElementById("slider-indicator");
 
-if (slider && prevBtn && nextBtn && sliderIndicator) {
-  const updateButtons = () => {
-    const scrollLeft = slider.scrollLeft;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    const itemWidth = slider.clientWidth;
-    
-    // Calculate current index (0 to length - 1)
-    let currentIndex = Math.round(scrollLeft / itemWidth);
-    currentIndex = Math.max(0, Math.min(currentIndex, stepCards.length - 1));
-    
-    sliderIndicator.textContent = `${currentIndex + 1} / ${stepCards.length}`;
-    
-    if (scrollLeft <= 0) {
-      prevBtn.disabled = true;
-    } else {
-      prevBtn.disabled = false;
-    }
-    
-    if (scrollLeft >= maxScroll - 5) {
-      // Loop around if button is pushed or keep disabled? The user wanted auto-scroll so button can just be disabled.
-      nextBtn.disabled = true;
-    } else {
-      nextBtn.disabled = false;
-    }
-
-    setActiveStep(currentIndex);
-  };
-
-  slider.addEventListener("scroll", () => {
-    if (!reduceMotion) {
-      window.requestAnimationFrame(updateButtons);
-    } else {
-      updateButtons();
-    }
-  }, { passive: true });
-
-  // Auto-scroll logic
+if (slider) {
   const autoScrollDuration = 1500;
   let autoScrollTimer;
   let timeRemaining = autoScrollDuration;
@@ -133,25 +94,20 @@ if (slider && prevBtn && nextBtn && sliderIndicator) {
     resetAutoScroll();
   };
 
+  // Replace step observer logic just to handle active class if needed 
+  // since we removed indicator. Or simple scroll listener
+  slider.addEventListener("scroll", () => {
+    let currentIndex = Math.round(slider.scrollLeft / slider.clientWidth);
+    currentIndex = Math.max(0, Math.min(currentIndex, stepCards.length - 1));
+    setActiveStep(currentIndex);
+  }, { passive: true });
+
   startAutoScroll();
 
   slider.addEventListener('mouseenter', pauseAutoScroll);
   slider.addEventListener('mouseleave', resumeAutoScroll);
   slider.addEventListener('touchstart', pauseAutoScroll, { passive: true });
   slider.addEventListener('touchend', resumeAutoScroll, { passive: true });
-
-  prevBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
-    resetAutoScroll(true); // forces timer to restart without waiting
-  });
-
-  nextBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
-    resetAutoScroll(true); // forces timer to restart without waiting
-  });
-
-  // Initial update
-  updateButtons();
 }
 
 const exampleQuestions = [
