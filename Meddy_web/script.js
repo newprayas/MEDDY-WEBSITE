@@ -33,31 +33,68 @@ if (!reduceMotion) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-const setActiveStep = (activeCard) => {
-  stepCards.forEach((card) => card.classList.remove("step-active"));
-  if (activeCard) {
-    activeCard.classList.add("step-active");
-  }
+const setActiveStep = (index) => {
+  stepCards.forEach((card, i) => {
+    if (i === index) {
+      card.classList.add("step-active");
+    } else {
+      card.classList.remove("step-active");
+    }
+  });
 };
 
-const stepObserver = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+const slider = document.getElementById("steps-slider");
+const prevBtn = document.getElementById("prev-step");
+const nextBtn = document.getElementById("next-step");
+const sliderIndicator = document.getElementById("slider-indicator");
 
-    if (visible.length > 0) {
-      setActiveStep(visible[0].target);
+if (slider && prevBtn && nextBtn && sliderIndicator) {
+  const updateButtons = () => {
+    const scrollLeft = slider.scrollLeft;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    const itemWidth = slider.clientWidth;
+    
+    // Calculate current index (0 to length - 1)
+    let currentIndex = Math.round(scrollLeft / itemWidth);
+    currentIndex = Math.max(0, Math.min(currentIndex, stepCards.length - 1));
+    
+    sliderIndicator.textContent = `${currentIndex + 1} / ${stepCards.length}`;
+    
+    if (scrollLeft <= 0) {
+      prevBtn.disabled = true;
+    } else {
+      prevBtn.disabled = false;
     }
-  },
-  {
-    root: null,
-    threshold: [0.2, 0.45, 0.7],
-    rootMargin: "-15% 0px -32% 0px",
-  }
-);
+    
+    if (scrollLeft >= maxScroll - 5) {
+      nextBtn.disabled = true;
+    } else {
+      nextBtn.disabled = false;
+    }
 
-stepCards.forEach((card) => stepObserver.observe(card));
+    setActiveStep(currentIndex);
+  };
+
+  slider.addEventListener("scroll", () => {
+    if (!reduceMotion) {
+      // Use requestAnimationFrame for smoother updates when scrolling manually
+      window.requestAnimationFrame(updateButtons);
+    } else {
+      updateButtons();
+    }
+  }, { passive: true });
+
+  prevBtn.addEventListener("click", () => {
+    slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+  });
+
+  // Initial update
+  updateButtons();
+}
 
 if (!reduceMotion) {
   let ticking = false;

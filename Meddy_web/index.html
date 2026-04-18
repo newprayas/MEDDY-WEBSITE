@@ -52,73 +52,87 @@
   </header>
 
   <main id="workflow" aria-label="Meddy workflow steps">
-    <section class="step-card step-focus step-crop-50 reveal step-active" data-step="1">
-      <div class="step-meta">
-        <span class="step-chip">Step 1</span>
-        <h2>Open the app website</h2>
-        <p>Start in seconds by opening Meddy in your browser on your phone.</p>
+    <div class="slider-container reveal">
+      <div class="slider-nav">
+        <button id="prev-step" class="nav-btn" aria-label="Previous step">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="slider-indicator" id="slider-indicator">1 / 5</div>
+        <button id="next-step" class="nav-btn" aria-label="Next step">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
-      <figure class="phone-frame">
-        <img class="shot" src="./assets/step1.jpg"
-          alt="Meddy app screenshot: Step 1, opening the app website on mobile." loading="lazy" decoding="async"
-          width="1220" height="2712" />
-      </figure>
-    </section>
+      
+      <div class="steps-slider" id="steps-slider">
+        <section class="step-card step-focus step-crop-50 step-active" data-step="1">
+          <div class="step-meta">
+            <span class="step-chip">Step 1</span>
+            <h2>Open the app website</h2>
+            <p>Start in seconds by opening Meddy in your browser on your phone.</p>
+          </div>
+          <figure class="phone-frame">
+            <img class="shot" src="./assets/step1.jpg"
+              alt="Meddy app screenshot: Step 1, opening the app website on mobile." loading="lazy" decoding="async"
+              width="1220" height="2712" />
+          </figure>
+        </section>
 
-    <section class="step-card step-focus step-crop-50 reveal" data-step="2">
-      <div class="step-meta">
-        <span class="step-chip">Step 2</span>
-        <h2>Create a chat</h2>
-        <p>Organize your study into chat categories like Medicine, Surgery, and Pathology.</p>
-      </div>
-      <figure class="phone-frame">
-        <img class="shot" src="./assets/step2.jpg" alt="Meddy app screenshot: Step 2, creating a subject-wise chat."
-          loading="lazy" decoding="async" width="1220" height="2712" />
-      </figure>
-    </section>
+        <section class="step-card step-focus step-crop-50" data-step="2">
+          <div class="step-meta">
+            <span class="step-chip">Step 2</span>
+            <h2>Create a chat</h2>
+            <p>Organize your study into chat categories like Medicine, Surgery, and Pathology.</p>
+          </div>
+          <figure class="phone-frame">
+            <img class="shot" src="./assets/step2.jpg" alt="Meddy app screenshot: Step 2, creating a subject-wise chat."
+              loading="lazy" decoding="async" width="1220" height="2712" />
+          </figure>
+        </section>
 
-    <section class="step-card step-crop-80 reveal" data-step="3">
-      <div class="step-meta">
-        <span class="step-chip">Step 3</span>
-        <h2>Add books</h2>
-        <p>Add books from the in-app library. Need a title not listed? You can request it.</p>
-      </div>
-      <figure class="phone-frame">
-        <img class="shot" src="./assets/add-a-book-real.jpg"
-          alt="Meddy app screenshot: Step 3, adding books from the app library." loading="lazy" decoding="async"
-          width="1220" height="2712" />
-      </figure>
-    </section>
+        <section class="step-card step-crop-80" data-step="3">
+          <div class="step-meta">
+            <span class="step-chip">Step 3</span>
+            <h2>Add books</h2>
+            <p>Add books from the in-app library. Need a title not listed? You can request it.</p>
+          </div>
+          <figure class="phone-frame">
+            <img class="shot" src="./assets/add-a-book-real.jpg"
+              alt="Meddy app screenshot: Step 3, adding books from the app library." loading="lazy" decoding="async"
+              width="1220" height="2712" />
+          </figure>
+        </section>
 
-    <section class="step-card reveal" data-step="4">
-      <div class="step-meta">
-        <span class="step-chip">Step 4</span>
-        <h2>Ask questions</h2>
-        <p>
-          Ask anything from your books. Meddy reads large volumes of content and gives focused,
-          useful answers.
-        </p>
-      </div>
-      <figure class="phone-frame">
-        <img class="shot" src="./assets/step4.jpg" alt="Meddy app screenshot: Step 4, asking book-based questions."
-          loading="lazy" decoding="async" width="1220" height="2712" />
-      </figure>
-    </section>
+        <section class="step-card" data-step="4">
+          <div class="step-meta">
+            <span class="step-chip">Step 4</span>
+            <h2>Ask questions</h2>
+            <p>
+              Ask anything from your books. Meddy reads large volumes of content and gives focused,
+              useful answers.
+            </p>
+          </div>
+          <figure class="phone-frame">
+            <img class="shot" src="./assets/step4.jpg" alt="Meddy app screenshot: Step 4, asking book-based questions."
+              loading="lazy" decoding="async" width="1220" height="2712" />
+          </figure>
+        </section>
 
-    <section class="step-card reveal" data-step="5">
-      <div class="step-meta">
-        <span class="step-chip">Step 5</span>
-        <h2>Verify</h2>
-        <p>
-          Answers are citation-first, with page and paragraph references so you can verify
-          quickly.
-        </p>
+        <section class="step-card" data-step="5">
+          <div class="step-meta">
+            <span class="step-chip">Step 5</span>
+            <h2>Verify</h2>
+            <p>
+              Answers are citation-first, with page and paragraph references so you can verify
+              quickly.
+            </p>
+          </div>
+          <figure class="phone-frame">
+            <img class="shot" src="./assets/step5.jpg" alt="Meddy app screenshot: Step 5, verifying answers with citations."
+              loading="lazy" decoding="async" width="1220" height="2712" />
+          </figure>
+        </section>
       </div>
-      <figure class="phone-frame">
-        <img class="shot" src="./assets/step5.jpg" alt="Meddy app screenshot: Step 5, verifying answers with citations."
-          loading="lazy" decoding="async" width="1220" height="2712" />
-      </figure>
-    </section>
+    </div>
 
     <section class="library-marquee reveal" aria-label="Books and subjects available in Meddy">
       <div class="marquee-hero" aria-hidden="true">
