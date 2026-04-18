@@ -53,16 +53,6 @@
 
   <main id="workflow" aria-label="Meddy workflow steps">
     <div class="slider-container reveal">
-      <div class="slider-nav">
-        <button id="prev-step" class="nav-btn" aria-label="Previous step">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="slider-indicator" id="slider-indicator">1 / 5</div>
-        <button id="next-step" class="nav-btn" aria-label="Next step">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-      
       <div class="steps-slider" id="steps-slider">
         <section class="step-card step-focus step-crop-50 step-active" data-step="1">
           <div class="step-meta">
@@ -120,17 +110,33 @@
         <section class="step-card" data-step="5">
           <div class="step-meta">
             <span class="step-chip">Step 5</span>
-            <h2>Verify</h2>
+            <h2>Accurate Verified Answers 🥳</h2>
             <p>
               Answers are citation-first, with page and paragraph references so you can verify
               quickly.
             </p>
           </div>
           <figure class="phone-frame">
-            <img class="shot" src="./assets/step5.jpg" alt="Meddy app screenshot: Step 5, verifying answers with citations."
-              loading="lazy" decoding="async" width="1220" height="2712" />
+            <img class="shot" src="./assets/step5.jpg"
+              alt="Meddy app screenshot: Step 5, verifying answers with citations." loading="lazy" decoding="async"
+              width="1220" height="2712" />
           </figure>
         </section>
+      </div>
+      <div class="slider-nav">
+        <button id="prev-step" class="nav-btn" aria-label="Previous step">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" fill="none">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <div class="slider-indicator" id="slider-indicator">1 / 5</div>
+        <button id="next-step" class="nav-btn" aria-label="Next step">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" fill="none">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </div>
 
