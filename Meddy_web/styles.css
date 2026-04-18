@@ -361,12 +361,19 @@ main {
   opacity: 0;
 }
 
-.step-focus .step-meta h2 {
+.step-meta h2 {
+  font-family: "Manrope", sans-serif;
   font-size: clamp(1.34rem, 6.2vw, 1.66rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  color: var(--text);
 }
 
-.step-focus .step-meta p {
+.step-meta p {
   font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 .feature-card-drugs {
@@ -788,7 +795,7 @@ main {
     padding: 1.2rem;
   }
 
-  .step-focus .step-meta h2 {
+  .step-meta h2 {
     font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   }
 
