@@ -46,7 +46,7 @@ const setActiveStep = (index) => {
 const slider = document.getElementById("steps-slider");
 
 if (slider) {
-  const autoScrollDuration = 1500;
+  const autoScrollDuration = document.title.includes("Meddy") ? 1200 : 2500;
   let autoScrollTimer;
   let timeRemaining = autoScrollDuration;
   let lastStartTime = Date.now();
@@ -108,6 +108,33 @@ if (slider) {
   slider.addEventListener('mouseleave', resumeAutoScroll);
   slider.addEventListener('touchstart', pauseAutoScroll, { passive: true });
   slider.addEventListener('touchend', resumeAutoScroll, { passive: true });
+
+  const nextBtn = document.querySelector(".slider-nav-btn.next");
+  const prevBtn = document.querySelector(".slider-nav-btn.prev");
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft >= maxScroll - 5) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+      }
+      resetAutoScroll(true);
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft <= 5) {
+        slider.scrollTo({ left: maxScroll, behavior: "smooth" });
+      } else {
+        slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+      }
+      resetAutoScroll(true);
+    });
+  }
 }
 
 const exampleQuestions = [

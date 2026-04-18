@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Mednsnap | Capture. Transcribe. Organize.</title>
+  <title>Mednsnap | Capture & Organize.</title>
   <meta name="description"
     content="Mednsnap helps you manage medical prescriptions, transcribe handwriting, and organize clinical images." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,158 +63,105 @@
     </div>
 
     <div class="slider-container reveal">
-      <div class="steps-slider" id="steps-slider">
-        <section class="step-card step-focus step-crop-50 step-active" data-step="1">
-          <div class="step-meta">
-            <span class="step-chip">Step 1</span>
-            <h2>Organize everything</h2>
-            <p>Sort your media and documents into logical folders for a clutter-free study environment.</p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Organize everything.jpg" alt="Mednsnap app screenshot: Organize everything."
-              loading="lazy" decoding="async" width="1220" height="2712" />
-          </figure>
-        </section>
+      <div class="slider-relative-wrapper">
+        <button class="slider-nav-btn prev" aria-label="Previous clinical step">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
 
-        <section class="step-card step-focus step-crop-50" data-step="2">
-          <div class="step-meta">
-            <span class="step-chip">Step 2</span>
-            <h2>Capture clinical info</h2>
-            <p>Capture clinical findings, prescriptions, and notes directly from your practice.</p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Capture clinical info.jpg"
-              alt="Mednsnap app screenshot: Capture clinical info." loading="lazy" decoding="async" width="1220"
-              height="2712" />
-          </figure>
-        </section>
+        <div class="steps-slider" id="steps-slider">
+          <section class="step-card step-focus step-crop-50 step-active" data-step="1">
+            <div class="step-meta">
+              <h2>Organize everything</h2>
+              <p>Sort your media and documents into logical folders for a clutter-free study environment.</p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Organize everything.jpg" alt="Mednsnap app screenshot: Organize everything."
+                loading="lazy" decoding="async" width="1220" height="2712" />
+            </figure>
+          </section>
 
-        <section class="step-card step-focus step-crop-50" data-step="3">
-          <div class="step-meta">
-            <span class="step-chip">Step 3</span>
-            <h2>Quickly note concepts</h2>
-            <p>Review key clinical concepts through your annotated documentation and quick clinical notes.</p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Quickly note concepts.jpg"
-              alt="Mednsnap app screenshot: Quickly note concepts." loading="lazy" decoding="async" width="1220"
-              height="2712" />
-          </figure>
-        </section>
+          <section class="step-card step-focus step-crop-50" data-step="2">
+            <div class="step-meta">
+              <h2>Capture clinical info</h2>
+              <p>Capture clinical findings, prescriptions, and notes directly from your practice.</p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Capture clinical info.jpg"
+                alt="Mednsnap app screenshot: Capture clinical info." loading="lazy" decoding="async" width="1220"
+                height="2712" />
+            </figure>
+          </section>
 
-        <section class="step-card step-crop-80" data-step="4">
-          <div class="step-meta">
-            <span class="step-chip">Step 4</span>
-            <h2>Manage your prescriptions</h2>
-            <p>Keep a digital record of prescriptions and patient orders for easy follow-up.</p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Manage your prescriptions.jpg"
-              alt="Mednsnap app screenshot: Manage your prescriptions." loading="lazy" decoding="async" width="1220"
-              height="2712" />
-          </figure>
-        </section>
+          <section class="step-card step-focus step-crop-50" data-step="3">
+            <div class="step-meta">
+              <h2>Quickly note concepts</h2>
+              <p>Review key clinical concepts through your annotated documentation and quick clinical notes.</p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Quickly note concepts.jpg"
+                alt="Mednsnap app screenshot: Quickly note concepts." loading="lazy" decoding="async" width="1220"
+                height="2712" />
+            </figure>
+          </section>
 
-        <section class="step-card" data-step="5">
-          <div class="step-meta">
-            <span class="step-chip">Step 5</span>
-            <h2>Find things quickly</h2>
-            <p>
-              Powerful search helps you locate specific patient data and clinical notes in seconds.
-            </p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Find things quickly.jpg" alt="Mednsnap app screenshot: Find things quickly."
-              loading="lazy" decoding="async" width="1220" height="2712" />
-          </figure>
-        </section>
+          <section class="step-card step-crop-80" data-step="4">
+            <div class="step-meta">
+              <h2>Manage your prescriptions</h2>
+              <p>Keep a digital record of prescriptions and patient orders for easy follow-up.</p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Manage your prescriptions.jpg"
+                alt="Mednsnap app screenshot: Manage your prescriptions." loading="lazy" decoding="async" width="1220"
+                height="2712" />
+            </figure>
+          </section>
 
-        <section class="step-card" data-step="6">
-          <div class="step-meta">
-            <span class="step-chip">Step 6</span>
-            <h2>Transcribe prescriptions</h2>
-            <p>
-              Let AI handle the handwriting. Convert physical prescriptions to digital text instantly.
-            </p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Transcribe prescriptions.jpg"
-              alt="Mednsnap app screenshot: Transcribe prescriptions." loading="lazy" decoding="async" width="1220"
-              height="2712" />
-          </figure>
-        </section>
+          <section class="step-card" data-step="5">
+            <div class="step-meta">
+              <h2>Find things quickly</h2>
+              <p>
+                Powerful search helps you locate specific patient data and clinical notes in seconds.
+              </p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Find things quickly.jpg" alt="Mednsnap app screenshot: Find things quickly."
+                loading="lazy" decoding="async" width="1220" height="2712" />
+            </figure>
+          </section>
 
-        <section class="step-card" data-step="7">
-          <div class="step-meta">
-            <span class="step-chip">Step 7</span>
-            <h2>Mark your images</h2>
-            <p>
-              Draw directly on clinical photos to highlight areas of interest and pathology.
-            </p>
-          </div>
-          <figure class="phone-frame">
-            <img class="shot" src="./assets/Mark your images.jpg" alt="Mednsnap app screenshot: Mark your images."
-              loading="lazy" decoding="async" width="1220" height="2712" />
-          </figure>
-        </section>
+          <section class="step-card" data-step="6">
+            <div class="step-meta">
+              <h2>Transcribe prescriptions</h2>
+              <p>
+                Let AI handle the handwriting. Convert physical prescriptions to digital text instantly.
+              </p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Transcribe prescriptions.jpg"
+                alt="Mednsnap app screenshot: Transcribe prescriptions." loading="lazy" decoding="async" width="1220"
+                height="2712" />
+            </figure>
+          </section>
+
+          <section class="step-card" data-step="7">
+            <div class="step-meta">
+              <h2>Mark your images</h2>
+              <p>
+                Draw directly on clinical photos to highlight areas of interest and pathology.
+              </p>
+            </div>
+            <figure class="phone-frame">
+              <img class="shot" src="./assets/Mark your images.jpg" alt="Mednsnap app screenshot: Mark your images."
+                loading="lazy" decoding="async" width="1220" height="2712" />
+            </figure>
+          </section>
+        </div>
+
+        <button class="slider-nav-btn next" aria-label="Next clinical step">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
-    </div>
-
-    <section class="examples-section reveal">
-      <h3 class="examples-title">ASK ANYTHING</h3>
-      <div class="chat-bubbles-container" id="examples-container">
-        <!-- populated randomly by JS -->
-      </div>
-    </section>
-
-    <section class="library-marquee reveal" aria-label="Books and subjects available in Mednsnap">
-      <div class="marquee-hero" aria-hidden="true">
-        <span>ANY BOOK</span>
-      </div>
-      <div class="marquee-row" data-marquee="books">
-        <div class="marquee-track">
-          <div class="marquee-run">
-            <span class="marquee-chip"># Davidson's Medicine</span>
-            <span class="marquee-chip"># Bailey and Love Surgery</span>
-            <span class="marquee-chip"># Robbins Pathology</span>
-            <span class="marquee-chip"># DC Dutta Obstetrics</span>
-            <span class="marquee-chip"># DC Dutta Gynecology</span>
-            <span class="marquee-chip"># USMLE First Aid</span>
-            <span class="marquee-chip"># Williams Obstetrics</span>
-            <span class="marquee-chip"># Nelson Pediatrics</span>
-            <span class="marquee-chip"># Apley's Orthopedics</span>
-            <span class="marquee-chip"># Lange Microbiology</span>
-            <span class="marquee-chip"># BD Chaurasia Anatomy</span>
-            <span class="marquee-chip"># Guyton and Hall</span>
-            <span class="marquee-chip"># Harrison's Medicine</span>
-            <span class="marquee-chip"># Hutchison's Medicine</span>
-            <span class="marquee-chip"># Macleods</span>
-            <span class="marquee-chip"># Norman Browse</span>
-            <span class="marquee-chip"># Brenner and Rector Nephrology</span>
-            <span class="marquee-chip"># Greenberg's Neurosurgery</span>
-          </div>
-        </div>
-      </div>
-      <div class="marquee-row marquee-row-alt" data-marquee="subjects">
-        <div class="marquee-track">
-          <div class="marquee-run">
-            <span class="marquee-chip"># Surgery</span>
-            <span class="marquee-chip"># Medicine</span>
-            <span class="marquee-chip"># Gynecology</span>
-            <span class="marquee-chip"># Obstetrics</span>
-            <span class="marquee-chip"># Anatomy</span>
-            <span class="marquee-chip"># Pediatrics</span>
-            <span class="marquee-chip"># USMLE</span>
-            <span class="marquee-chip"># Nephrology</span>
-            <span class="marquee-chip"># Pharmacology</span>
-            <span class="marquee-chip"># Microbiology</span>
-            <span class="marquee-chip"># Neurosurgery</span>
-            <span class="marquee-chip"># Orthopedics</span>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <div class="section-divider reveal"></div>
@@ -227,19 +174,11 @@
     <div class="cta-box">
       <div class="cta-actions">
         <section class="cta-section">
-          <p class="cta-label">--- Website ---</p>
-          <a class="cta-btn" href="https://betterdocs-ten.vercel.app/" target="_blank" rel="noopener noreferrer">
-            <span>Try mednsnap website</span>
-          </a>
-          <p class="cta-note">Works everywhere: phones, computers, tablets</p>
-        </section>
-
-        <div class="cta-divider" aria-hidden="true">|</div>
-
-        <section class="cta-section cta-section-text">
           <p class="cta-label">--- Android ---</p>
-          <p class="cta-coming-soon">Coming soon</p>
-          <p class="cta-note">Please use the website for now. The website has all the features.</p>
+          <a class="cta-btn" href="#" target="_blank" rel="noopener noreferrer">
+            <span>Try mednsnap</span>
+          </a>
+          <p class="cta-coming-soon">Available Now</p>
         </section>
 
         <div class="cta-divider cta-divider-soft" aria-hidden="true">|</div>
@@ -247,7 +186,6 @@
         <section class="cta-section">
           <p class="cta-label">--- iOS ---</p>
           <p class="cta-coming-soon">Coming soon</p>
-          <p class="cta-note">Please use the website for Apple devices for now.<br>The website has all the features.</p>
         </section>
       </div>
     </div>
