@@ -14,6 +14,18 @@
   --radius-md: 14px;
 }
 
+
+.btn-pill span {
+  border-radius: 999px !important;
+  min-height: 38px !important;
+  font-size: 0.9rem !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.btn-pill {
+  border-radius: 999px !important;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -869,3 +881,11 @@ main {
     padding: 0.4rem;
   }
 }
+
+/* Utility Classes - High Priority */
+.text-red { color: #d32932 !important; }
+.text-green { color: #047857 !important; }
+
+/* Utility Classes - High Priority */
+.text-red { color: #d32932 !important; }
+.text-green { color: #047857 !important; }
